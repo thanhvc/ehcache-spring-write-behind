@@ -23,10 +23,11 @@ Building The Recipe
 2. goto http://localhost:8080/recipe14/
 3. Insert Employee: Clicks on Insert button
 4. Gets the Employee by Id: Fill Id in textbox and Clicks on Load button
-5. Implements net.danielwind.effcaching.recipe15.controllers.ApplicationContextProvider 
+5. Implements
 
+     net.danielwind.effcaching.recipe15.controllers.ApplicationContextProvider
+            
 Allowing you take the bean by this one.
-
 6. Implements the write-behind pattern by ehcache.xml
 
          <cacheWriter writeMode="write-behind"
@@ -38,9 +39,12 @@ Allowing you take the bean by this one.
 		</cacheWriter>
 		
 		And get Bean: EmployeeDao employeeDaoImpl = (EmployeeDao) ApplicationContextProvider.getApplicationContext().getBean("employeeDaoImpl");
+		
+rateLimitPerSecond: The maximum number of store operations to allow per second.
+
 7. Implements org.springframework.jdbc.support.incrementer.HsqlMaxValueIncrementer
 
-HsqlMaxValueIncrementer incrementer = new HsqlMaxValueIncrementer();
+    HsqlMaxValueIncrementer incrementer = new HsqlMaxValueIncrementer();
     incrementer.setDataSource(dataSource);
     incrementer.setIncrementerName("employee_seq");
     incrementer.setColumnName("value");
