@@ -116,4 +116,55 @@ $(document).ready(function(){
 		});
 	});
 	
+	
+	//listen to batch insert button event
+	$("#batch-btn").bind("click", function(){
+		
+		$("#employees-table tbody").empty();
+		
+		var number = $("#batch-number").val();
+		if (number == null || number.length <= 0) {
+			return;
+		}
+		
+		//do ajax call
+		$.ajax({
+			type:"post",
+			url:"http://localhost:8080/recipe15/employee/inject?number=" + number,
+			contentType: "application/json; charset=utf-8",
+			headers: {},
+	        dataType:"json",
+	        data:null,
+	        success: function(data, textStatus, XMLHttpRequest) {
+	        	var html = [
+	        	   "<tr>",
+	        	  	"<td>",
+	        		   data.id,
+	        		 "</td>",
+	        		  "<td>",
+        		    	data.firstName,
+        		      "</td>",
+        		      "<td>",
+    		    		data.lastName,
+    		    	  "</td>",
+    		    	  "<td>",
+    		    		data.department,
+    		    	  "</td>",
+    		    	  "<td>",
+    		    		data.role,
+    		    	  "</td>",
+    		    	  "<td>",
+    		    		data.salary,
+    		    	  "</td>",
+	        		 "</tr>"
+	        		].join("");
+	        		$("#employees-table tbody").append(html);
+	        	
+	        },
+	        error: function(xhr, status, error){
+	             Console.log(xhr.responseText);
+	         }
+		});
+	});
+	
 });

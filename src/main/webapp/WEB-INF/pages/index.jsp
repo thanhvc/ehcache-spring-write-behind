@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<h1>Recipe 14 (Spring Cache Abstraction with EhCache)</h1>
+	<h1>Recipe 15 (Spring Cache Abstraction with EhCache)</h1>
 	
 	<div style="margin-bottom:15px;">
 		<input type="button" id="load-list-btn" value="Load Employees From Database"/>
@@ -32,6 +32,11 @@
 	
 	<div style="margin-top:15px;">
 		<input type="button" id="insert-btn" value="Insert Employee"/>
+	</div>
+	
+	<div style="margin-top:15px;">
+	    <input type="text" id="batch-number""/>
+		<input type="button" id="batch-btn" value="Batch Insert"/>
 	</div>
 	
 	<div style="margin-top:15px;">

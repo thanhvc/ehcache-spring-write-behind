@@ -20,7 +20,7 @@ Build Dependencies
 Building The Recipe
 -------
 1. Compile: mvn clean jetty:run
-2. goto http://localhost:8080/recipe14/
+2. goto http://localhost:8080/recipe15/
 3. Insert Employee: Clicks on Insert button
 4. Gets the Employee by Id: Fill Id in textbox and Clicks on Load button
 5. Implements

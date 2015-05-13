@@ -62,6 +62,28 @@ public final class ApplicationController {
     applicationService.insert(emp);
   }
 	
+	@RequestMapping(method = RequestMethod.POST, value="/employee/inject")
+  @ResponseStatus(HttpStatus.OK)
+  public void invokeBatchInsertEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    log.info("--- Invoking controller method: invokeBatchInsertEmployee() ---");
+    
+    long number = Long.parseLong(request.getParameter("number"));
+    Employee emp;
+    for(int i = 0; i< number; i++) {
+      emp = new Employee();
+      
+      emp.setFirstName("Thanh " + i);
+      emp.setLastName("Vu" + System.currentTimeMillis());
+      emp.setDepartment("IT");
+      emp.setSalary(50000);
+      emp.setRole("staff");
+      applicationService.insert(emp);
+    }
+    
+    log.info("--- Done to inject:" + number + " employees ---");
+     
+  }
+	
 	@RequestMapping(method = RequestMethod.POST, value="/employee")
   @ResponseStatus(HttpStatus.OK)
   public void invokeGetEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
