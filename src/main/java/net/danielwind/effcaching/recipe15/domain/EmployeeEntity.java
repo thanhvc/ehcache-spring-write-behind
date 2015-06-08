@@ -1,6 +1,6 @@
 package net.danielwind.effcaching.recipe15.domain;
 
-public final class Employee {
+public final class EmployeeEntity {
 
 	private long id;
 	private long salary;
@@ -64,11 +64,11 @@ public final class Employee {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof Employee)) {
+    if (!(o instanceof EmployeeEntity)) {
       return false;
     }
 
-    Employee that = (Employee) o;
+    EmployeeEntity that = (EmployeeEntity) o;
 
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) {
       return false;

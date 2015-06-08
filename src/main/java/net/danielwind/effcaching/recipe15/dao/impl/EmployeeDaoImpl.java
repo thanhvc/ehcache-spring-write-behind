@@ -8,7 +8,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import net.danielwind.effcaching.recipe15.dao.EmployeeDao;
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,15 +48,15 @@ public class EmployeeDaoImpl extends JdbcDaoSupport implements EmployeeDao {
 	 * @{inheritDoc}
 	 */
 	@Cacheable("employeeCache")
-	public List<Employee> findAll() {
+	public List<EmployeeEntity> findAll() {
 		log.info("--- Accessing Dao Layer: EmployeeDaoImpl.findAll() ---");
 		String sql = "SELECT * FROM employees";
-		return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Employee>(Employee.class));
+		return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<EmployeeEntity>(EmployeeEntity.class));
 		
 	}
 	
   @CacheEvict(value="employeeCache", allEntries=true)
-	public Employee insert(final Employee emp) {
+	public EmployeeEntity insert(final EmployeeEntity emp) {
 	  final String sql = "INSERT INTO EMPLOYEES " +
 	      "(FIRSTNAME, LASTNAME, ROLE, DEPARTMENT, SALARY) VALUES (?, ?, ?, ?, ?)";
 	  
@@ -81,10 +81,10 @@ public class EmployeeDaoImpl extends JdbcDaoSupport implements EmployeeDao {
 	}
 
   @Cacheable(value="employeeCache", key="#employeeId")
-  public Employee get(String employeeId) {
+  public EmployeeEntity get(String employeeId) {
     log.info("--- Accessing Dao Layer: EmployeeDaoImpl.get() ---");
     String sql = "SELECT * FROM employees WHERE ID = ?";
-    return getJdbcTemplate().queryForObject(sql, new Object[] { employeeId}, new BeanPropertyRowMapper<Employee>(Employee.class));
+    return getJdbcTemplate().queryForObject(sql, new Object[] { employeeId}, new BeanPropertyRowMapper<EmployeeEntity>(EmployeeEntity.class));
   }
   
   

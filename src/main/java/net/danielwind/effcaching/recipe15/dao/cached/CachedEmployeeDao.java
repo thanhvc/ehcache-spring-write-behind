@@ -20,7 +20,7 @@ import java.util.List;
 
 import net.danielwind.effcaching.recipe15.cache.CacheDelegate;
 import net.danielwind.effcaching.recipe15.dao.EmployeeDao;
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.incrementer.DataFieldMaxValueIncrementer;
@@ -39,18 +39,18 @@ public class CachedEmployeeDao implements EmployeeDao {
   private CacheDelegate cacheDelegate;
   
   @Override
-  public List<Employee> findAll() {
+  public List<EmployeeEntity> findAll() {
     return cacheDelegate.findAll();
   }
 
   @Override
-  public Employee insert(Employee emp) {
+  public EmployeeEntity insert(EmployeeEntity emp) {
     cacheDelegate.addElementToCacheWriter(emp);
     return emp;
   }
 
   @Override
-  public Employee get(String employeeId) {
+  public EmployeeEntity get(String employeeId) {
     return cacheDelegate.getElementFromCacheLoader(Long.parseLong(employeeId));
   }
   

@@ -20,7 +20,7 @@ import java.util.Collection;
 
 import net.danielwind.effcaching.recipe15.controllers.ApplicationContextProvider;
 import net.danielwind.effcaching.recipe15.dao.EmployeeDao;
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 import net.sf.ehcache.CacheEntry;
 import net.sf.ehcache.CacheException;
 import net.sf.ehcache.Ehcache;
@@ -78,7 +78,7 @@ public class EmployeeCacheWriter implements CacheWriter {
   public void write(Element element) throws CacheException {
     log.info("==========EmployeeCacheWriter#write(Element)==========");
     EmployeeDao employeeDaoImpl = (EmployeeDao) ApplicationContextProvider.getApplicationContext().getBean("employeeDaoImpl");
-    Employee inserted = employeeDaoImpl.insert((Employee)element.getObjectValue());
+    EmployeeEntity inserted = employeeDaoImpl.insert((EmployeeEntity)element.getObjectValue());
     
     log.info("cache size = " + cache.getSize());
     log.info("==========EmployeeCacheWriter#write(Element):: put to cache==========");

@@ -7,7 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 import net.danielwind.effcaching.recipe15.services.impl.ApplicationServiceImpl;
 import net.danielwind.effcaching.recipe15.utils.JsonConverter;
 
@@ -39,7 +39,7 @@ public final class ApplicationController {
 		
 		log.info("--- Invoking controller method: invokeEmployeeList() ---");
 		
-		List<Employee> employees = applicationService.findAllEmployees();
+		List<EmployeeEntity> employees = applicationService.findAllEmployees();
 		
 		log.debug("--- The number of employees found is: " + employees.size());
 		
@@ -52,7 +52,7 @@ public final class ApplicationController {
   @ResponseStatus(HttpStatus.OK)
   public void invokeInsertEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
     log.info("--- Invoking controller method: invokeInsertEmployee() ---");
-    Employee emp = new Employee();
+    EmployeeEntity emp = new EmployeeEntity();
     
     emp.setFirstName("Thanh");
     emp.setLastName("Vu" + System.currentTimeMillis());
@@ -68,9 +68,9 @@ public final class ApplicationController {
     log.info("--- Invoking controller method: invokeBatchInsertEmployee() ---");
     
     long number = Long.parseLong(request.getParameter("number"));
-    Employee emp;
+    EmployeeEntity emp;
     for(int i = 0; i< number; i++) {
-      emp = new Employee();
+      emp = new EmployeeEntity();
       
       emp.setFirstName("Thanh " + i);
       emp.setLastName("Vu" + System.currentTimeMillis());
@@ -90,7 +90,7 @@ public final class ApplicationController {
     log.info("--- Invoking controller method: invokeGetEmployee() ---");
     String employeeId = (String)request.getParameter("employeeId");
     log.info("--- EmployeeId = " + employeeId + " ---");
-    Employee emp = applicationService.get(employeeId);
+    EmployeeEntity emp = applicationService.get(employeeId);
 
     String json = JsonConverter.toJson(emp);
     PrintWriter out = response.getWriter();

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://localhost:8080/ws" xmlns:employee="http://localhost:8080/ws" targetNamespace="http://localhost:8080/ws" elementFormDefault="qualified">
+	<xs:import namespace="http://localhost:8080/ws" schemaLocation="EmployeeDetail.xsd" />
+	<xs:element name="EmployeeDetailRequest">
+        <xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+		   </xs:sequence>
+		</xs:complexType>
+    </xs:element>
+	<xs:element name="EmployeeDetailResponse">
+        <xs:complexType>
+		  <xs:sequence>
+		    <xs:element name="employeeDetail" type="employee:Employee" />
+		  </xs:sequence>
+		</xs:complexType>
+    </xs:element>
+</xs:schema>

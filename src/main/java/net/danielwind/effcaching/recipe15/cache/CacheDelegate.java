@@ -19,7 +19,7 @@ package net.danielwind.effcaching.recipe15.cache;
 import java.util.List;
 
 import net.danielwind.effcaching.recipe15.dao.EmployeeDao;
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 import net.sf.ehcache.CacheException;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Ehcache;
@@ -78,7 +78,7 @@ public final class CacheDelegate {
    * Method that adds a new employee object in Cache
    * @param employee Domain object instance
    */
-  public void addElementToCache(Employee emp) {
+  public void addElementToCache(EmployeeEntity emp) {
     cache.put(new Element(emp.getId(), emp));
   }
   
@@ -86,7 +86,7 @@ public final class CacheDelegate {
    * Method that adds a new employee object in CacheWriter
    * @param employee Domain object instance
    */
-  public void addElementToCacheWriter(Employee emp) {
+  public void addElementToCacheWriter(EmployeeEntity emp) {
     log.info("--- CacheDelegate.addElementToCacheWriter() ---");
     log.info("before::cache size = " + cache.getSize());
     //get key
@@ -101,18 +101,18 @@ public final class CacheDelegate {
    * Method that get a employee object in Cache
    * @param employee Domain object instance
    */
-  public Employee getElementFromCache(Long key) {
+  public EmployeeEntity getElementFromCache(Long key) {
     log.info("cache size = " + cache.getSize());
-    return (Employee) cache.get(key).getObjectValue();
+    return (EmployeeEntity) cache.get(key).getObjectValue();
   }
   
   /**
    * Method that get a employee object in CacheLoader
    * @param employee Domain object instance
    */
-  public Employee getElementFromCacheLoader(Long key) {
+  public EmployeeEntity getElementFromCacheLoader(Long key) {
     log.info("cache size = " + cache.getSize());
-    return (Employee) cache.getWithLoader(key, null, null) .getObjectValue();
+    return (EmployeeEntity) cache.getWithLoader(key, null, null) .getObjectValue();
   }
   
   /**
@@ -126,7 +126,7 @@ public final class CacheDelegate {
    * Find all the employee
    * @return The list
    */
-  public List<Employee> findAll() {
+  public List<EmployeeEntity> findAll() {
     log.info("===============CacheDelegate#findAll()==============");
     log.info(employeeDaoImpl);
     return employeeDaoImpl.findAll();

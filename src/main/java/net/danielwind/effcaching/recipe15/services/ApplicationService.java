@@ -2,7 +2,7 @@ package net.danielwind.effcaching.recipe15.services;
 
 import java.util.List;
 
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 
 public interface ApplicationService {
   
@@ -11,13 +11,13 @@ public interface ApplicationService {
    * stored in the database.  
    * @return The employee
    */
-  public Employee get(String employeeId);
+  public EmployeeEntity get(String employeeId);
 
 	/**
 	 * Simple service method for accessing Employees DAO
 	 * @return Typed List of all employees available
 	 */
-	public List<Employee> findAllEmployees();
+	public List<EmployeeEntity> findAllEmployees();
 	
 	/**
    * Simple method for inserting the 
@@ -25,5 +25,5 @@ public interface ApplicationService {
    * 
    * @param emp The Employee
    */
-  public void insert(Employee emp);
+  public void insert(EmployeeEntity emp);
 }

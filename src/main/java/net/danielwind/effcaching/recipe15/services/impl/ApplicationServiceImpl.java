@@ -3,7 +3,7 @@ package net.danielwind.effcaching.recipe15.services.impl;
 import java.util.List;
 
 import net.danielwind.effcaching.recipe15.dao.EmployeeDao;
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 import net.danielwind.effcaching.recipe15.services.ApplicationService;
 
 import org.apache.log4j.Logger;
@@ -21,19 +21,19 @@ public class ApplicationServiceImpl implements ApplicationService {
 	/**
 	 * @{inheritDoc}
 	 */
-	public List<Employee> findAllEmployees() {
+	public List<EmployeeEntity> findAllEmployees() {
 		log.info("--- Accessing Service Layer: ApplicationService.findAllEmployees() ---");
 		return cachedEmployeeDao.findAll();
 	}
 
   @Override
-  public void insert(Employee emp) {
+  public void insert(EmployeeEntity emp) {
     log.info("--- Accessing Service Layer: ApplicationService.insert() ---");
     cachedEmployeeDao.insert(emp);
   }
 
   @Override
-  public Employee get(String employeeId) {
+  public EmployeeEntity get(String employeeId) {
     return cachedEmployeeDao.get(employeeId);
   }
 	

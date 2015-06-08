@@ -24,4 +24,26 @@
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
   </listener>
+
+	<servlet>
+		<servlet-name>webservices</servlet-name>
+		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>transformWsdlLocations</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>webservices</servlet-name>
+		<url-pattern>*.wsdl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webservices</servlet-name>
+		<url-pattern>/endpoints/*</url-pattern>
+	</servlet-mapping>  
 </web-app>

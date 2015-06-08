@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://localhost:8080/ws" targetNamespace="http://localhost:8080/ws" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:element name="Employee" type="Employee"/>
+	<xsd:complexType name="Employee">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long" />
+			<xsd:element name="firstName" type="xsd:string" />
+			<xsd:element name="lastName" type="xsd:string" />
+			<xsd:element name="salary" type="xsd:long" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

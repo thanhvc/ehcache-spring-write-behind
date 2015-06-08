@@ -2,7 +2,7 @@ package net.danielwind.effcaching.recipe15.dao;
 
 import java.util.List;
 
-import net.danielwind.effcaching.recipe15.domain.Employee;
+import net.danielwind.effcaching.recipe15.domain.EmployeeEntity;
 
 import org.springframework.jdbc.support.incrementer.DataFieldMaxValueIncrementer;
 
@@ -13,14 +13,14 @@ public interface EmployeeDao {
 	 * stored in the database.  
 	 * @return Typed List of All Employees
 	 */
-	public List<Employee> findAll();
+	public List<EmployeeEntity> findAll();
 	
 	/**
    * Simple method for retrieving the employee by Id
    * stored in the database.  
    * @return The employee
    */
-  public Employee get(String employeeId);
+  public EmployeeEntity get(String employeeId);
 	
 	/**
 	 * Simple method for inserting the 
@@ -28,7 +28,7 @@ public interface EmployeeDao {
 	 * 
 	 * @param emp The Employee
 	 */
-	public Employee insert(Employee emp);
+	public EmployeeEntity insert(EmployeeEntity emp);
 	
 	/**
 	 * Gets HsqlMaxValueIncrementer instance

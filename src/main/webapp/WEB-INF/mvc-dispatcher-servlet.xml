@@ -53,5 +53,21 @@
 		<property name="prefix"><value>/WEB-INF/pages/</value></property>
 		<property name="suffix"><value>.jsp</value></property>
 	</bean>
+	<!-- http://localhost:8080/recipe15/endpoints/EmployeeDetailsService.wsdl -->
+	<bean id="EmployeeDetailsService" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition" lazy-init="true">  
+      <property name="schemaCollection">  
+        <bean class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">  
+          <property name="inline" value="true" />  
+          <property name="xsds">  
+            <list>  
+              <value>schemas/EmployeeService.xsd</value>  
+            </list>  
+          </property>  
+        </bean>  
+      </property>  
+      <property name="portTypeName" value="EmployeeDetailService"/>  
+      <property name="serviceName" value="EmployeeDetailServices" />  
+      <property name="locationUri" value="/endpoints"/>  
+    </bean>  
  
 </beans>
